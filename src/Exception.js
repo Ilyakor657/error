@@ -21,7 +21,7 @@ class Exception extends Error {
       Error.captureStackTrace(this, this.constructor);
     }
 
-    // ошибки в диапазоне от 450 до 499 не интересуют
+    // ошибки со статус-кодом от 450 до 499 не интересуют
     if (450 > statusCode > 499) {
       ErrorMailer.send(this);
     }
