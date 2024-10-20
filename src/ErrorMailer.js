@@ -33,7 +33,7 @@ class ErrorMailer {
   };
 
   /**
-   * Создать сообщение для отправки через /usr/sbin/sendmail
+   * Создать сообщение
    * @param {string} text текст сообщения
    * @returns {string} 
    */
