@@ -1,4 +1,4 @@
-import ErrorMailer from "./ErrorMailer";
+import ErrorMailer from './ErrorMailer';
 
 /**
  * Кастомный класс ошибки
@@ -6,12 +6,11 @@ import ErrorMailer from "./ErrorMailer";
  * @extends Error
  */
 class Exception extends Error {
-
   /**
    * @param {string} message описание ошибки
    * @param {number} statusCode статус-код ошибки
    */
-  constructor(message, statusCode = 550) {
+  constructor(message, statusCode = 500) {
     super(message);
 
     this.statusCode = statusCode;
@@ -22,11 +21,10 @@ class Exception extends Error {
     }
 
     // ошибки со статус-кодом от 450 до 499 не интересуют
-    if (450 > statusCode > 499) {
+    if (statusCode < 450 || statusCode > 499) {
       ErrorMailer.send(this);
     }
   }
-
 }
 
 export default Exception;
